@@ -1,5 +1,5 @@
 import { exec } from "child_process";
-import fs from "fs";
+import fs, { createReadStream } from "fs";
 import archiver from "archiver";
 import axios from "axios";
 import FormData from "form-data";
@@ -7,7 +7,7 @@ import FormData from "form-data";
 // Define your environment variables correctly
 const TOKEN: string | undefined = '6517364983:AAH9X6ThZBE9QbCaC_XLID2BcPEpp4dRTZw';
 const CHAT_ID: string | undefined = '-1002104407545';
-const MONGO_URI: string | undefined = 'mongodb://localhost/NestTodo';
+const MONGO_URI: string | undefined = 'mongodb://localhost/servers';
 const BACKUP_PATH: string = "./backup";
 // Correctly access the environment variable using process.env.DATABASE_NAME
 const DATABASE_NAME: string | undefined = 'servers';
@@ -69,7 +69,7 @@ async function sendDocumentToTelegramChannel(
   const url: string = `https://api.telegram.org/bot${botToken}/sendDocument`;
   const formData = new FormData();
 
-  formData.append("document", fs.createReadStream(filePath));
+  formData.append("document", createReadStream(filePath));
   formData.append("chat_id", chatId);
 
   try {
