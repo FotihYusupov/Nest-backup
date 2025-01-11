@@ -8,7 +8,7 @@ const TOKEN: string | undefined = '6517364983:AAH9X6ThZBE9QbCaC_XLID2BcPEpp4dRTZ
 const CHAT_ID: string | undefined = '-1002104407545';
 const MONGO_URI: string | undefined = 'mongodb://localhost/NestTodo';
 const BACKUP_PATH: string = "./backup";
-const DATABASE_NAME: string | undefined = 'CRM';
+const DATABASE_NAME: string | undefined = 'servers';
 
 console.log(TOKEN, CHAT_ID, MONGO_URI, DATABASE_NAME);
 
