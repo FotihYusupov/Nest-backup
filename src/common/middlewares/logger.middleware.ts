@@ -22,7 +22,6 @@ export class LoggerMiddleware implements NestMiddleware {
     const logFilePath = path.join(logsFolderPath, logFileName);
 
     if (!fs.existsSync(logsFolderPath)) {
-      console.log('hello');
       fs.mkdirSync(logsFolderPath, { recursive: true });
     }
 
