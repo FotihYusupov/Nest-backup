@@ -1,4 +1,4 @@
-import { exec } from "child_process";
+// import { exec } from "child_process";
 import fs, { createReadStream } from "fs";
 import archiver from "archiver";
 import axios from "axios";
@@ -8,7 +8,7 @@ import FormData from "form-data";
 const TOKEN: string | undefined = '6517364983:AAH9X6ThZBE9QbCaC_XLID2BcPEpp4dRTZw';
 const CHAT_ID: string | undefined = '-1002104407545';
 const MONGO_URI: string | undefined = 'mongodb://localhost/servers';
-const BACKUP_PATH: string = "./backup";
+// const BACKUP_PATH: string = "./backup";
 // Correctly access the environment variable using process.env.DATABASE_NAME
 const DATABASE_NAME: string | undefined = 'servers';
 
@@ -21,16 +21,17 @@ if (!TOKEN || !CHAT_ID || !MONGO_URI || !DATABASE_NAME) {
 
 function backupDatabase(): void {
   // eslint-disable-next-line no-useless-escape
-  const command: string = `mongodump --uri="${MONGO_URI}" --out="${BACKUP_PATH}"`;
+  // const command: string = `mongodump --uri="${MONGO_URI}" --out="${BACKUP_PATH}"`;
 
-  exec(command, (error) => {
-    if (error) {
-      console.error("Error during database backup:", error);
-      return;
-    }
-    console.log("Database backup created successfully");
-    zipAndSend();
-  });
+  // exec(command, (error) => {
+  //   if (error) {
+  //     console.error("Error during database backup:", error);
+  //     return;
+  //   }
+  //   console.log("Database backup created successfully");
+  //   zipAndSend();
+  // });
+  zipAndSend();
 }
 
 async function zipAndSend(): Promise<void> {
