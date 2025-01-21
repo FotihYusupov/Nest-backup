@@ -25,7 +25,7 @@ import { BackupService } from './modules/Backups/backup.service';
       }),
     }),
 
-    MongooseModule.forRoot(process.env.MONGODB_URL),
+    MongooseModule.forRoot(process.env.MONGODB_URI),
     UsersModule,
     TodosModule,
   ],
