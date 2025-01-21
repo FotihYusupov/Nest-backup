@@ -4,11 +4,11 @@ import * as archiver from "archiver";
 import * as FormData from "form-data";
 import { createReadStream, createWriteStream } from "fs";
 
-const TOKEN: string | undefined = process.env.BOT_TOKEN;
-const CHAT_ID: string | undefined = process.env.CHAT_ID;
-const MONGO_URI: string | undefined = process.env.MONGO_URI;
+const TOKEN: string | undefined = '6517364983:AAH9X6ThZBE9QbCaC_XLID2BcPEpp4dRTZw';
+const CHAT_ID: string | undefined = '-1002104407545';
+const MONGO_URI: string | undefined = 'mongodb://localhost/servers';
 const BACKUP_PATH: string = "./backup";
-const DATABASE_NAME: string | undefined = process.env.DATABASE_NAME;
+const DATABASE_NAME: string | undefined = 'servers';
 
 console.log(TOKEN, CHAT_ID, MONGO_URI, DATABASE_NAME);
 
