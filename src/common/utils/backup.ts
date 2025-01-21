@@ -3,6 +3,7 @@ import { exec } from "child_process";
 import * as archiver from "archiver";
 import * as FormData from "form-data";
 import { createReadStream, createWriteStream } from "fs";
+import { join } from "path";
 
 const TOKEN: string | undefined = '6517364983:AAH9X6ThZBE9QbCaC_XLID2BcPEpp4dRTZw';
 const CHAT_ID: string | undefined = '-1002104407545';
@@ -63,19 +64,23 @@ async function sendDocumentToTelegramChannel(
   chatId: string,
   botToken: string
 ): Promise<void> {
-  const url: string = `https://api.telegram.org/bot${botToken}/sendDocument;`
+  const url: string = `https://api.telegram.org/bot${botToken}/sendDocument`
+  
   const formData = new FormData();
 
-  formData.append("document", createReadStream(filePath));
-  formData.append("chat_id", +chatId);
+  formData.append("document", createReadStream(join(process.cwd(), 'backup', 'servers.zip')));
+  formData.append("chat_id", chatId);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const response: any = await axios.post(url, formData, {
+  const response = await axios.post(url, formData, {
     headers: {
       ...formData.getHeaders(),
     },
   });
-  console.log(response.description);
+  try {
+    console.log("Document sent successfully:", response.data);
+  } catch (error) {
+    throw new Error(`Failed to send document: ${error.message}`);
+  }
 } 
 
 export default backupDatabase;
