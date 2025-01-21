@@ -69,18 +69,13 @@ async function sendDocumentToTelegramChannel(
   formData.append("document", createReadStream(filePath));
   formData.append("chat_id", +chatId);
 
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const response: any = await axios.post(url, formData, {
-      headers: {
-        ...formData.getHeaders(),
-      },
-    });
-    console.log(response.description);
-    console.log("Document sent successfully:", response.data);
-  } catch (error) {
-    throw new Error(`Failed to send document: ${error.message}`);
-  }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const response: any = await axios.post(url, formData, {
+    headers: {
+      ...formData.getHeaders(),
+    },
+  });
+  console.log(response.description);
 } 
 
 export default backupDatabase;
