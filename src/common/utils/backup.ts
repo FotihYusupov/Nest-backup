@@ -70,15 +70,17 @@ async function sendDocumentToTelegramChannel(
   formData.append("chat_id", +chatId);
 
   try {
-    const response = await axios.post(url, formData, {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const response: any = await axios.post(url, formData, {
       headers: {
         ...formData.getHeaders(),
       },
     });
+    console.log(response.description);
     console.log("Document sent successfully:", response.data);
   } catch (error) {
-    console.error("Failed to send document:", error.message);
+    throw new Error(`Failed to send document: ${error.message}`);
   }
-}
+} 
 
 export default backupDatabase;
